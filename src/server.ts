@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Configurar rotas
-app.use('/api/payments', paymentRouter);
+app.use('/api/payments', paymentRouter); 
 
 // Iniciar servidor
 app.listen(PORT, () => {

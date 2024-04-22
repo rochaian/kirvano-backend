@@ -85,24 +85,48 @@ function padMonth(month: string): string {
   }
 
 
+  function validateCVC(cvc: string): boolean {
+    // Verifica se o CVC contém apenas números
+    const cvcPattern = /^\d+$/;
+  
+    // Valida a quantidade de dígitos do CVC
+    if (!cvcPattern.test(cvc)) {
+      return false; // Não é um número válido
+    }
+  
+    const cvcLength = cvc.length;
+  
+    // O CVC deve ter 3 ou 4 dígitos
+    if (cvcLength !== 3 && cvcLength !== 4) {
+      return false; // Comprimento inválido
+    }
+  
+    return true; // CVC válido
+  }
+
+
 export function processPayment(req: Request, res: Response) {
-  const { cardNumber, expirationDateMM, expirationDateYY } = req.body;
+  const { cardNumber, expirationDateMM, expirationDateYY, cvc} = req.body;
 
   console.log('cardNumber', cardNumber);
   console.log('expirationDate', expirationDateMM+'/'+expirationDateYY)
+  console.log('CVC', cvc);
   
 
-  console.log('luhn', luhnCheck(cardNumber));
   console.log('isCardValid', isCardValid(cardNumber));
+  console.log('validadeLuhn', luhnCheck(cardNumber));
   console.log('validateCardNumberLength', validateCardNumberLength(cardNumber));
-  console.log('validateExpirationDate', validateExpirationDate(expirationDateMM, expirationDateYY))
+  console.log('validateExpirationDate', validateExpirationDate(expirationDateMM, expirationDateYY));
+  console.log('validateCVC', validateCVC(cvc))
+
 
   // Validação do cartão
   if (
         !isCardValid(cardNumber) || 
         !luhnCheck(cardNumber) || 
         !validateCardNumberLength(cardNumber) ||
-        !validateExpirationDate(expirationDateMM, expirationDateYY)
+        !validateExpirationDate(expirationDateMM, expirationDateYY) ||
+        !validateCVC(cvc)
     ) {
     res.status(400).json({ error: 'Pagamento recusado.' });
   } else {

@@ -1,4 +1,4 @@
-# Kirvano Checkout - FrontEnd
+# Kirvano Checkout - BackEnd
 
 ## Node.js TypeScript API Project - Payments Endpoint
 
@@ -55,7 +55,7 @@ Para configurar e executar o projeto:
    ```bash
    npm start
    ```
-   
+
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Confira o arquivo LICENSE para mais detalhes.

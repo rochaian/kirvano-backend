@@ -18,6 +18,9 @@ app.use(cors(corsOptions));
 // Middleware para parsing JSON
 app.use(express.json());
 
+app.get('/', (req, res) => res.send('Kirvano Backend'));
+
+
 // Configurar rotas
 app.use('/api/payments', paymentRouter); 
 

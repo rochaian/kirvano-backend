@@ -108,6 +108,8 @@ function padMonth(month: string): string {
 export function processPayment(req: Request, res: Response) {
   const { cardNumber, expirationDateMM, expirationDateYY, cvc} = req.body;
 
+  console.log(req.body);
+
   console.log('cardNumber', cardNumber);
   console.log('expirationDate', expirationDateMM+'/'+expirationDateYY)
   console.log('CVC', cvc);
@@ -128,7 +130,7 @@ export function processPayment(req: Request, res: Response) {
         !validateExpirationDate(expirationDateMM, expirationDateYY) ||
         !validateCVC(cvc)
     ) {
-    res.status(400).json({ error: 'Pagamento recusado.' });
+    res.status(400).json({ message: 'Pagamento recusado.' });
   } else {
     res.status(200).json({ message: 'Pagamento aceito.' });
   }

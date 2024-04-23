@@ -4,6 +4,12 @@
 
 Bem-vindo ao repositório da API Node.js escrita em TypeScript! Esta API tem um endpoint para processamento de pagamentos, onde os clientes podem enviar dados do cartão de crédito para validação. O endpoint aceita requisições POST na rota `/api/payments/`, mas para autenticar a chamada é necessário incluir um parâmetro de acesso na URL: `?access_token=ABCDE12345`.
 
+Você pode testar a API acessando a URL
+[kirvano-Backend](https://kirvano-backend.onrender.com)
+
+Para testar o Frontend basta acessar o link
+[kirvano-Frontend](https://kirvano-frontend.vercel.app/)
+
 ## Exemplo de Dados para a Requisição POST
 
 Para testar a rota, você pode enviar um JSON com o seguinte formato:

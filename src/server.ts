@@ -1,5 +1,5 @@
-import express from 'express';
 import paymentRouter from './routes/payment';
+import express from 'express'
 const cors = require('cors');
 
 const app = express();
